@@ -1,0 +1,168 @@
+\documentclass[UTF8,a4paper,twoside]{article}
+\usepackage[UTF8]{ctex}  % 加载ctex包，支持中文
+% 封面信息
+\newcommand{\stuname}{张三}			 	  % 学生姓名
+\newcommand{\stuid}{3210000000}		  		 % 学生学号
+\newcommand{\teaname}{李四}		    	  % 指导教师
+\newcommand{\stugrade}{2021级}			 		% 学生年级
+\newcommand{\stumajor}{信息工程} 	 		% 学生专业
+\newcommand{\stucollege}{信息与电子工程学院} 		% 学生所在学院
+\newcommand{\stutitle}{毕业设计题目}			% 毕设题目
+\newcommand{\stuengtitle}{English Title}			% 毕设英文题目
+
+% 页面设置
+% A4纸张大小 上下左边边距参考Word中"适中"类型
+% A4纸张宽21cm 高29.7cm
+\usepackage{geometry}	
+\geometry{left=1.91cm, right=1.91cm, top=2.54cm, bottom=2.54cm}
+% 设置首行缩进2字符
+% 使用 \noindent 命令可以取消缩进
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+% 参考文献格式
+\usepackage{gbt7714}
+
+% 字体设置
+\usepackage{fontspec}
+
+\setmainfont[Path=fonts/]{times.ttf}					% 缺省英文字体为Times New Roman
+\setCJKmainfont[Path=fonts/, BoldFont=SimFangBold.ttf]{SimFang.ttf}			% 缺省中文字体为 仿宋
+\setCJKfamilyfont{fs}[Path=fonts/, BoldFont=SimFangBold.ttf]{SimFang.ttf}
+\newcommand{\zhengwen}{\CJKfamily{fs}\zihao{-4}}	% 正文字体 仿宋小4号
+\setCJKfamilyfont{Heiti}[Path=fonts/, BoldFont=SimHeiBold.ttf]{SimHei.ttf}
+\newcommand{\cover}{\CJKfamily{fs}\zihao{3}}
+\setCJKfamilyfont{Songti}[Path=fonts/, BoldFont=SimSunBold.ttf]{SimSun.ttc}
+\newcommand{\header}{\CJKfamily{Songti}\zihao{-5}}
+\newcommand{\imageortable}{\CJKfamily{Songti}\zihao{5}}
+
+% 行距设置
+\usepackage{setspace}
+\linespread{1.5}\selectfont		% 1.5倍字号，这与word中的1.5倍行距有一点差别
+
+% 多级标题设置
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}		% 设置标题层次共4层
+\titleformat{\section}[block]{\zihao{3}\bfseries}{\chinese{section}、}{0pt}{}
+\titleformat{\subsection}[block]{\zihao{3}\bfseries}{\arabic{subsection}}{0.5em}{}
+\titleformat{\subsubsection}[block]{\zihao{-3}\bfseries}{\arabic{subsection}.\arabic{subsubsection}}{0.5em}{}
+\titleformat{\paragraph}{\zihao{4}\bfseries}{\arabic{subsection}.\arabic{subsubsection}.\arabic{paragraph}}{0.5em}{}
+% 设置段间距
+\titlespacing{\section}{0pt}{12pt}{6pt}				% 标题1 段前12磅 段后6磅
+\titlespacing{\subsection}{0pt}{13pt}{13pt}			% 标题2 段前13磅 段后13磅
+\titlespacing{\subsubsection}{0pt}{13pt}{13pt}		% 标题3 段前13磅 段后13磅
+\titlespacing{\paragraph}{0pt}{13pt}{13pt}			% 标题4 段前13磅 段后13磅
+
+% 定义一个新的引用命令，自动将引用放到文本的上方
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+
+% 插入图片宏包
+% 多个浮动体连续排布用参数H进行固定，如下所示，不用H会出现难以预料的排布
+% \begin{figure}[H]
+% content...
+% \end{figure}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{float}
+\captionsetup{labelsep=quad,labelfont=bf,font=singlespacing}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}  % 公式的编号格式
+% 插入表格宏包
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+\usepackage{enumerate}
+
+\usepackage{caption}
+
+% 设置图表标题字体
+
+\renewcommand{\figurename}{\imageortable\bfseries 图}
+\renewcommand{\tablename}{\imageortable\bfseries 表}
+
+% 设置目录
+\usepackage{titletoc}
+\setcounter{tocdepth}{3}
+\renewcommand{\thesection}{\CJKfamily{Heiti}\chinese{section}、}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection}}
+\renewcommand{\theparagraph}{\arabic{subsection}.\arabic{subsubsection}.\arabic{paragraph}}
+\titlecontents{section}[2em]{\CJKfamily{Heiti}\bfseries\zihao{-4}}{\contentslabel{2em}}{}{\titlerule*[0.5pc]{$\cdot$}\contentspage}
+\titlecontents{subsection}[2.5em]{\bfseries\zihao{-4}}{\contentslabel{1em}}{}{\titlerule*[0.5pc]{$\cdot$}\contentspage}
+\titlecontents{subsubsection}[4.5em]{\zihao{-4}}{\contentslabel{1.83em}}{}{\titlerule*[0.5pc]{$\cdot$}\contentspage}
+\titlecontents{paragraph}[5.5em]{\zihao{-4}}{\contentslabel{2.67em}}{}{\titlerule*[0.5pc]{$\cdot$}\contentspage}
+% 超链接
+% colorlinks=true 超链接以颜色表示 false 超链接以方框框出
+% linkcolor 指定颜色
+% CJKbookmarks 让链接支持中文
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,CJKbookmarks=true]{hyperref}
+\newcommand{\myeqref}[1]{式 (\ref{#1})}
+\newcommand{\mytaref}[1]{表 \ref{#1}}
+\newcommand{\myfiref}[1]{图 \ref{#1}}
+
+% 设置页眉页脚
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancypagestyle{Index}{
+	\setcounter{page}{1}\pagenumbering{Roman}
+	\fancyhead[LO]{}
+	\fancyhead[RO]{\header \stutitle}
+	\fancyhead[LE]{\header 浙江大学本科生毕业论文（设计）}
+	\fancyhead[RE]{}
+	\fancyfoot[C]{\zihao{-5} \thepage}
+}
+\fancypagestyle{Require}{
+    \fancyhead[L]{}
+	\fancyhead[R]{\header \stutitle}
+    \fancyfoot[C]{} % 清空页脚的页码
+}
+\fancypagestyle{Content}{
+	\setcounter{page}{1}\pagenumbering{arabic}
+	\fancyhead[LO]{}
+	\fancyhead[RO]{\header \stutitle}
+	\fancyhead[LE]{\header 浙江大学本科生毕业论文（设计）}
+	\fancyhead[RE]{}
+	\fancyfoot[C]{\zihao{-5} \thepage}
+}
+
+% 设置参考文献
+\usepackage{natbib}
+% 插入公式
+\usepackage{amsmath}
+\usepackage{indentfirst}
+
+\renewcommand{\contentsname}{\vspace{-\baselineskip}}
+\begin{document}
+    % 封面
+    \input{contents/cover.tex}
+    % 要求
+    \newpage
+    \pagestyle{Require}
+    \input{contents/requirements.tex}
+	
+    % 目录
+    \newpage
+    \pagestyle{Index}
+    \begin{center}
+        \zihao{3} \bfseries 目录
+    \end{center}
+    \tableofcontents
+    \noindent \CJKfamily{Heiti}\zihao{-4}\bfseries \hspace{0.36em}毕业论文（设计）文献综述和开题报告考核
+    \newpage 
+	\ \\ 
+    % 正文
+    \newpage
+    \input{contents/Introduction.tex}
+    \input{contents/Report.tex}
+    \input{contents/Translation.tex}
+    \input{contents/Original.tex}
+
+    % 考核表
+    \newpage
+    \input{contents/examination.tex}
+	
+			
+\end{document}
