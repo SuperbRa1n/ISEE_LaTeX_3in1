@@ -8,7 +8,8 @@
 \newcommand{\stumajor}{信息工程} 	 		% 学生专业
 \newcommand{\stucollege}{信息与电子工程学院} 		% 学生所在学院
 \newcommand{\stutitle}{毕业设计题目}			% 毕设题目
-\newcommand{\stuengtitle}{English Title}			% 毕设英文题目
+\newcommand{\stuengtitlelineone}{English Title}			% 毕设英文题目
+\newcommand{\stuengtitlelinetwo}{English Title}
 
 % 页面设置
 % A4纸张大小 上下左边边距参考Word中"适中"类型
@@ -66,17 +67,18 @@
 \usepackage{caption}
 \usepackage{float}
 \captionsetup{labelsep=quad,labelfont=bf,font=singlespacing}
-\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
-\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}  % 公式的编号格式
+% \renewcommand{\thefigure}{\arabic{subsection}.\arabic{figure}}
+% \renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}  % 公式的编号格式
 % 插入表格宏包
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{multirow}
 \usepackage{array}
-\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+\renewcommand{\thetable}{\arabic{subsection}.\arabic{table}}
 \usepackage{enumerate}
 
 \usepackage{caption}
+
 
 % 设置图表标题字体
 
@@ -133,6 +135,9 @@
 % 插入公式
 \usepackage{amsmath}
 \usepackage{indentfirst}
+\numberwithin{equation}{subsection} % 将公式编号与章节关联
+\numberwithin{figure}{subsection} % 图的编号与章节关联
+\numberwithin{table}{subsection}  % 表的编号与章节关联
 
 \renewcommand{\contentsname}{\vspace{-\baselineskip}}
 \begin{document}
@@ -157,6 +162,7 @@
     \newpage
     \input{contents/Introduction.tex}
     \input{contents/Report.tex}
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
     \input{contents/Translation.tex}
     \input{contents/Original.tex}
 
