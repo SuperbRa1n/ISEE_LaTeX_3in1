@@ -18,11 +18,11 @@
 
 #### 方法二：Makefile
 
-在终端运行
+在终端（bash环境）运行
 ```bash
 make all
 ```
 即可编译生成最终的pdf文件。如需清理日志，则在终端运行
 ```bash
-make clean
+make cleanall
 ```

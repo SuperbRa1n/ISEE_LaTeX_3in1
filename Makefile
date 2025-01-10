@@ -1,3 +1,6 @@
+# 显式设置默认目标
+.DEFAULT_GOAL := all
+
 # 定义变量
 LATEXMK     = latexmk
 LATEXMK_OPTS = -xelatex -output-directory=$(BUILD_DIR) -aux-directory=$(BUILD_DIR) -interaction=nonstopmode -f
