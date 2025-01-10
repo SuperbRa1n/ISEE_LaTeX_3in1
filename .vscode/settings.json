@@ -1,0 +1,89 @@
+{
+    // 指定主文件
+    "latex-workshop.latex.rootFile.doNotPrompt": true,
+    "latex-workshop.latex.rootFile.useSubFile": false,
+
+    // 配置 LaTeX 工具链
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-output-directory=build",
+                "-aux-directory=build",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-interaction=nonstopmode",
+                "-output-directory=build",
+                "-aux-directory=build",
+                "-f",
+                "%DOC%"
+            ]
+        }
+    ],
+
+    // 配置构建链
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk (xelatex)",
+            "tools": ["latexmk"]
+        },
+        {
+            "name": "xelatex",
+            "tools": ["xelatex"]
+        }
+    ],
+
+    // 设置默认的构建链为 latexmk
+    "latex-workshop.latex.recipe.default": "latexmk (xelatex)",
+
+    // PDF 查看器
+    "latex-workshop.view.pdf.viewer": "tab",
+
+    // 将中间文件存储到 build 目录中
+    "latex-workshop.latex.outDir": "./build",
+
+    // 递归清理子目录中的中间文件
+    "latex-workshop.latex.autoClean.subfolder.enabled": true,
+
+    // 自动保存和编译
+    "latex-workshop.latex.autoBuild.run": "onSave", // 保存时触发编译
+
+    // 配置需要清理的中间文件类型
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.nav",
+        "*.synctex.gz",
+        "*.vrb"
+    ],
+
+    // 清理规则
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+}

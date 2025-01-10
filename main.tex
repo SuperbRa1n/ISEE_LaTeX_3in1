@@ -1,5 +1,7 @@
 \documentclass[UTF8,a4paper,twoside]{article}
 \usepackage[UTF8]{ctex}  % 加载ctex包，支持中文
+\usepackage{pdfpages}
+\usepackage{tocvsec2}
 
 % 设置参考文献
 % 引入natbib包，参考文献格式相关
@@ -10,20 +12,21 @@
 \usepackage{gbt7714}
 % 封面信息
 \newcommand{\stuname}{张三}			 	  % 学生姓名
-\newcommand{\stuid}{3210000000}		  		 % 学生学号
+\newcommand{\stuid}{3210xxxxxx}		  		 % 学生学号
 \newcommand{\teaname}{李四}		    	  % 指导教师
 \newcommand{\stugrade}{2021级}			 		% 学生年级
 \newcommand{\stumajor}{信息工程} 	 		% 学生专业
 \newcommand{\stucollege}{信息与电子工程学院} 		% 学生所在学院
-\newcommand{\stutitle}{毕业设计题目}			% 毕设题目
-\newcommand{\stuengtitlelineone}{English Title}			% 毕设英文题目
-\newcommand{\stuengtitlelinetwo}{English Title}
+\newcommand{\stutitle}{毕业设计题目}		% 毕设题目
+\newcommand{\stuengtitlelineone}{The First Line of Your English Title}			% 毕设英文题目
+\newcommand{\stuengtitlelinetwo}{The Second Line of Your English Title}
 
 % 页面设置
 % A4纸张大小 上下左边边距参考Word中"适中"类型
 % A4纸张宽21cm 高29.7cm
 \usepackage{geometry}	
 \geometry{left=1.91cm, right=1.91cm, top=2.54cm, bottom=2.54cm}
+\usepackage{subfigure}  % 导入subfigure宏包
 % 设置首行缩进2字符
 % 使用 \noindent 命令可以取消缩进
 \usepackage{indentfirst}
@@ -32,7 +35,10 @@
 
 % 字体设置
 \usepackage{fontspec}
-
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{upgreek}
+\usepackage{pifont}
 \setmainfont[Path=fonts/, BoldFont=timesbd.ttf]{times.ttf}					% 缺省英文字体为Times New Roman
 \setCJKmainfont[Path=fonts/, BoldFont=SimFangBold.ttf]{SimFang.ttf}			% 缺省中文字体为 仿宋
 \setCJKfamilyfont{fs}[Path=fonts/, BoldFont=SimFangBold.ttf]{SimFang.ttf}
@@ -45,7 +51,7 @@
 
 % 行距设置
 \usepackage{setspace}
-\linespread{1.5}\selectfont		% 1.5倍字号，这与word中的1.5倍行距有一点差别
+\linespread{1.625}\selectfont		% 1.5倍字号，这与word中的1.5倍行距有一点差别
 
 % 多级标题设置
 \usepackage{titlesec}
@@ -85,7 +91,6 @@
 
 \usepackage{caption}
 
-
 % 设置图表标题字体
 
 \renewcommand{\figurename}{\imageortable\bfseries 图}
@@ -110,7 +115,8 @@
 \newcommand{\myeqref}[1]{式 (\ref{#1})}
 \newcommand{\mytaref}[1]{表 \ref{#1}}
 \newcommand{\myfiref}[1]{图 \ref{#1}}
-
+% 修改 algorithm 环境的标题为“算法”
+% 直接重新定义 algorithm 的标题为中文
 % 设置页眉页脚
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -139,26 +145,27 @@
 % 插入公式
 \usepackage{amsmath}
 \usepackage{indentfirst}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
 \numberwithin{equation}{subsection} % 将公式编号与章节关联
 \numberwithin{figure}{subsection} % 图的编号与章节关联
 \numberwithin{table}{subsection}  % 表的编号与章节关联
-
 \renewcommand{\contentsname}{\vspace{-\baselineskip}}											
 % 这条命令可以控制引入编译的各子文件是否参与编译	
 
 \begin{document}
     % 封面
-    \input{contents/cover}
+    \input{contents/cover}\newpage\thispagestyle{empty}\ 
     % 要求
     \newpage
     \pagestyle{Require}
-    \include{contents/requirements}
+    \include{contents/requirements}\newpage\thispagestyle{empty}\ 
 	
     % 目录
     \newpage
     \pagestyle{Index}
-    \begin{center}
-        \zihao{3} {\bfseries 目录}
+    \begin{center} {\bfseries \zihao{3}目录}
     \end{center}
     \tableofcontents
     \noindent {\CJKfamily{Heiti}\zihao{-4}\bfseries \hspace{0.36em}毕业论文（设计）文献综述和开题报告考核}

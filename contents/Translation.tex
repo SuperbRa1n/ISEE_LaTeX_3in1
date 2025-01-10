@@ -1,2 +1,29 @@
 \cleardoublepage
 \section{外文翻译}
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\begin{center}
+    \zihao{3}\textbf{论文题目}
+\end{center}
+\subsection*{摘要}
+这是摘要。
+\settocdepth{part} % 以下部分不计入目录
+
+
+% 注：正文部分的subsection中公式和图表的编号会在每一个subsection中重新开始计数，如果需要在整个文档中保持编号的连续性，可以在每个subsection后加上以下两行代码：
+% \setcounter{equation}{上一个subsection中最后一个公式的编号}
+% \setcounter{figure}{上一个subsection中最后一个图表的编号}
+
+\subsection{引言}
+这是引言，测试参考文献\cite{schweizer2013comparative}。
+
+% 参考文献
+\newpage
+\bibliographystyle{gbt7714-numerical}
+\phantomsection		% 要想目录中参考文献的超链接正确需要加这一语句
+\subsection{参考文献}
+{\normalfont\CJKfamily{Songti}\zihao{5}\setlength{\baselineskip}{14pt}
+\renewcommand{\refname}{\vspace{-\baselineskip}}
+\bibliography{reference/refs}}
+
+\resettocdepth % 恢复目录计数
